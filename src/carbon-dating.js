@@ -19,15 +19,10 @@ const HALF_LIFE_PERIOD = 5730;
  */
 function dateSample(sampleActivity) {
   if (typeof sampleActivity !== 'string' || sampleActivity < 0 || sampleActivity > 15) return false;
-  console.log("sample " + sampleActivity);
-  let numerator = Math.log(MODERN_ACTIVITY/sampleActivity);
-  let denominator = 0.693 / HALF_LIFE_PERIOD;
-  t = Math.ceil(numerator/denominator);
+  t = Math.ceil((Math.log(MODERN_ACTIVITY/sampleActivity))/(0.693 / HALF_LIFE_PERIOD));
   if (Number.isFinite(t)) {
-    console.log("result finite " + t);
     return t;
   }else{
-    console.log ("return false");
     return false;
   }
 }
